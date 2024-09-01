@@ -10,7 +10,8 @@
 </body>
 <script>
     function fetch(){
-    fetch(`/api?text=${encodeURIComponent(document.getElementById("txt").value)}`, {
+        let value = document.getElementById("txt").value;
+    fetch(`/api?text=${encodeURIComponent(value)}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
