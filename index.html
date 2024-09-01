@@ -5,6 +5,26 @@
     <title>Document</title>
 </head>
 <body>
-    hello world
+    <input txt style="width: 100px; margin:auto; height: 50px;">
+    <button onclick=fetch() style="width: 50px;aspect-ratio: 1/1; ; margin:auto;"></button>
 </body>
+<script>
+    function fetch(){
+    fetch(`/api?text=${encodeURIComponent(document.getElementById("txt").value)}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => { throw new Error(text); });
+        }
+        return response.json();
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });}
+</script>
 </html>
